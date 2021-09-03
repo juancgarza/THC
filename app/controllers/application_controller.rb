@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to root_path, alert: "" if unauthenticated
+    redirect_to root_path, alert: "You can't access this page, log in." if unauthenticated
   end
 
   private
