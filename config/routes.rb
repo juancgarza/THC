@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  resources :dealerships, only: [:index, :show]
+
   root "main#index"
 end
