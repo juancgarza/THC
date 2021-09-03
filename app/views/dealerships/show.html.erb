@@ -1,5 +1,9 @@
 <%= link_to 'Back to dealerships', dealerships_path %>
-
+<% flash.each do |type, msg| %>
+  <div class="<%= type %>">
+    <%= msg %>
+  </div>
+<% end %>
 <h1>
   <%= @dealership.name %>
 </h1>
@@ -27,7 +31,7 @@
         <td><%= item.quantity %></td>
         <% if @current_user.admin? %>
           <td>
-            <%= link_to "Delete", "#", remote: true, method: :delete %>          
+            <%= link_to "Delete", dealership_item_path(@dealership, item), method: :delete %>
           </td>
         <% end %>
       </tr>

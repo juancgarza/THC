@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  resources :dealerships, only: [:index, :show]
-
+  resources :dealerships, only: [:index, :show] do
+    scope module: :dealerships do
+      resources :items, only: [:destroy]
+    end    
+  end
+  
   root "main#index"
 end
