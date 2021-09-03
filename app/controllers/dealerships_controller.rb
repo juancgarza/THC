@@ -7,6 +7,6 @@ class DealershipsController < ApplicationController
 
   def show
     @dealership = Dealership.find(params[:id])
-    @vehicles = @dealership.vehicles.order(model: :desc)
+    @items = @dealership.items
   end
 end

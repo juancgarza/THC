@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum status: {
+  enum user_type: {
     user: 0,
     admin: 1
   }
@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "must be a valid email address" }
 
   has_secure_password
+
+  def admin?
+    user_type == "admin"
+  end
 end
