@@ -1,6 +1,9 @@
 <h1>Sign In</h1>
 
 <%= form_with url: sign_in_path do |form| %>
+  <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
   <div>
     <%= form.label :email %>
     <%= form.text_field :email, placeholder: "hi@sonatafy.com" %>

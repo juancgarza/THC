@@ -1,3 +1,15 @@
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <h1>
   Home
 </h1>
+<% if session[:user_id] %>
+  <%= link_to "See dealerships", dealerships_path %>
+  <%= button_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", sign_in_path %>
+<% end %>
