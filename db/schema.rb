@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_181059) do
+ActiveRecord::Schema.define(version: 2021_09_02_195450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dealerships", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "vehicle_id", null: false
+    t.bigint "dealership_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dealership_id"], name: "index_items_on_dealership_id"
+    t.index ["vehicle_id"], name: "index_items_on_vehicle_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -23,4 +40,15 @@ ActiveRecord::Schema.define(version: 2021_09_02_181059) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "manufacturer"
+    t.string "model"
+    t.string "color"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "items", "dealerships"
+  add_foreign_key "items", "vehicles"
 end
