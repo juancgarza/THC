@@ -1,9 +1,8 @@
 class AdminPolicy
-  attr_reader :current_user, :resource
+  attr_reader :current_user
 
-  def initialize(current_user:, resource:)
+  def initialize(current_user:)
     @current_user = current_user
-    @resource = resource
   end
 
   def able_to_add_or_delete?

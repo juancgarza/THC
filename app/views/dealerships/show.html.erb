@@ -1,13 +1,15 @@
 <%= link_to 'Back to dealerships', dealerships_path %>
+
 <% flash.each do |type, msg| %>
   <div class="<%= type %>">
     <%= msg %>
   </div>
 <% end %>
+
 <h1>
   <%= @dealership.name %>
 </h1>
-
+<%= link_to "Create stock item", new_dealership_vehicle_path(@dealership) %>
 <table class="styled-table">
   <thead>
     <tr>
@@ -15,6 +17,8 @@
       <th>Manufacturer</th>
       <th>Color</th>
       <th>Price</th>
+      <th>Year</th>
+      <th>Status</th>
       <th>Quantity</th>
       <% if @current_user.admin? %>
         <th>Actions</th>
@@ -28,10 +32,12 @@
         <td><%= item.manufacturer %></td>
         <td><%= item.color %></td>
         <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.year %></td>
+        <td><%= item.ownership_status %></td>
         <td><%= item.quantity %></td>
         <% if @current_user.admin? %>
           <td>
-            <%= link_to "Delete", dealership_item_path(@dealership, item), method: :delete %>
+            <%= button_to "Delete", dealership_item_path(@dealership, item), method: :delete %>
           </td>
         <% end %>
       </tr>

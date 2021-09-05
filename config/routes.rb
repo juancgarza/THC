@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :dealerships, only: [:index, :show] do
     scope module: :dealerships do
       resources :items, only: [:destroy]
+      resources :vehicles, only: [:new, :create]
     end    
   end
   
