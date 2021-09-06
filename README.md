@@ -1,24 +1,54 @@
-# README
+# Take Home Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+### Ruby version
 
-* Ruby version
+* This application requires Ruby 2.7.2
 
-* System dependencies
+For Installing a specific Ruby version you may use [rbenv](https://github.com/rbenv/rbenv#installation)
+```
+$ brew install rbenv
+$ rbenv init
+$ rbenv install x.x.x
+$ rbenv global x.x.x
+```
+You can set rbenv to initialize everytime you open a new terminal window by adding this to your `.bash_profile`  
+```
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+```
 
-* Configuration
+### Setup
 
-* Database creation
+1. Get the code.
 
-* Database initialization
+        $ git clone https://github.com/moneypool/moneypool.git
 
-* How to run the test suite
+2. Run the setup script
 
-* Services (job queues, cache servers, search engines, etc.)
+        $ bin/setup
+        
+## User login
 
-* Deployment instructions
+Two users are created while setup, one with a user_type: "user" and one with user_type: "admin"
 
-* ...
+### Admin
+
+* Email: `admin@example.com`
+* Password: `password`
+
+### User
+
+* Email: `user@example.com`
+* Password: `password`
+
+## Testing
+
+### How to run the test suite
+
+* Make sure you run `rails db:migrate RAILS_ENV=test` before running the test suite
+
+* Run `rspec` to run all the test suite
+* Run `rspec path/to/file.rb` to run a specific test file
+* Run `rspec path/to/file.rb:##` to run a specific line in a test

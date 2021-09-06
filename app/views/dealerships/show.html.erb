@@ -9,7 +9,9 @@
 <h1>
   <%= @dealership.name %>
 </h1>
-<%= link_to "Create stock item", new_dealership_vehicle_path(@dealership) %>
+<% if @current_user.admin? %>
+  <%= link_to "Create stock item", new_dealership_vehicle_path(@dealership) %>
+<% end %>
 <table class="styled-table">
   <thead>
     <tr>
